@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import BASE_SIZE from '../constants/baseSize';
+import Palette from '../constants/palette';
 
 const GlobalStyles = createGlobalStyle`
   html,
@@ -33,6 +34,23 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: ${BASE_SIZE * 2}px;
+  }
+
+  table {
+    width: 100%;
+    background-color: ${Palette.asphaltGrey};
+
+    tr:first-child {
+      border-bottom: 1px solid ${Palette.pigeonGrey};
+    }
+
+    th {
+      text-align: left;
+    }
+    
+    th, td {
+      padding: ${BASE_SIZE}px;
+    }
   }
 `;
 

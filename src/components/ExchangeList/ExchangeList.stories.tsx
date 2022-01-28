@@ -1,12 +1,9 @@
-import * as React from 'react';
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Head from '../components/Head';
-import Header from '../components/Header';
-import Wrapper from '../components/Wrapper';
-import ExchangeList from '../components/ExchangeList';
+import ExchangeList from './index';
 
-// TODO: fetch actual data using API
-const exchanges = [
+const dummyData = [
   {
     rank: 1,
     name: 'Binance',
@@ -41,20 +38,16 @@ const exchanges = [
   },
 ];
 
-const HomePage = () => (
-  <>
-    <Head />
+export default {
+  title: 'ExchangeList',
+  component: ExchangeList,
+} as ComponentMeta<typeof ExchangeList>;
 
-    <main>
-      <Header />
-
-      <Wrapper>
-        <h1>Exchanges</h1>
-
-        <ExchangeList exchanges={exchanges} />
-      </Wrapper>
-    </main>
-  </>
+const Template: ComponentStory<typeof ExchangeList> = (args) => (
+  <ExchangeList {...args} />
 );
 
-export default HomePage;
+export const Basic = Template.bind({});
+Basic.args = {
+  exchanges: dummyData,
+};
