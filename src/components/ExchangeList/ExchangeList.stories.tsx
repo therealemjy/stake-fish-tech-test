@@ -3,8 +3,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import ExchangeList from './index';
 
-const dummyData = [
+const exchanges = [
   {
+    id: 0,
     rank: 1,
     name: 'Binance',
     country: 'Cayman Islands',
@@ -13,6 +14,7 @@ const dummyData = [
       'https://assets.coingecko.com/markets/images/52/small/binance.jpg?1519353250',
   },
   {
+    id: 1,
     rank: 2,
     name: 'OKX',
     country: 'Belize',
@@ -21,6 +23,7 @@ const dummyData = [
       'https://assets.coingecko.com/markets/images/96/small/WeChat_Image_20220117220452.png?1642428377',
   },
   {
+    id: 2,
     rank: 3,
     name: 'Coinbase Exchange',
     country: 'United States',
@@ -29,6 +32,7 @@ const dummyData = [
       'https://assets.coingecko.com/markets/images/23/small/Coinbase_Coin_Primary.png?1621471875',
   },
   {
+    id: 3,
     rank: 4,
     name: 'KuCoin',
     country: 'Seychelles',
@@ -49,5 +53,5 @@ const Template: ComponentStory<typeof ExchangeList> = (args) => (
 
 export const Basic = Template.bind({});
 Basic.args = {
-  exchanges: dummyData,
+  exchanges,
 };

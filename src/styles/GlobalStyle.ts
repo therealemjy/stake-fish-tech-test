@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import BASE_SIZE from '../constants/baseSize';
 import Palette from '../constants/palette';
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   html,
   body {
     font-family: 'Inter', sans-serif;
@@ -50,6 +50,7 @@ const GlobalStyles = createGlobalStyle`
     
     th, td {
       padding: ${BASE_SIZE}px;
+      vertical-align: middle;
     }
   }
 
@@ -58,4 +59,4 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export default GlobalStyles;
+export default GlobalStyle;

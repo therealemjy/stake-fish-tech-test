@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as Styles from './styles';
 
 export interface Exchange {
+  id: number;
   rank: number;
   name: string;
   url: string;
@@ -31,8 +32,20 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
       {exchanges.map((exchange) => (
         <tr>
           <td>{exchange.rank}</td>
-          <td>{exchange.name}</td>
+
+          <td>
+            <Styles.ExchangeLink to={`/exchange/${exchange.id}`}>
+              <Styles.ExchangeLinkLogo
+                src={exchange.logoUri}
+                alt={`Logo of ${exchange.name}`}
+              />
+
+              <span>{exchange.name}</span>
+            </Styles.ExchangeLink>
+          </td>
+
           <td>{exchange.country}</td>
+
           <td>
             <a
               href={exchange.url}
