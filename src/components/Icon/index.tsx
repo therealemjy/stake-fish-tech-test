@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Palette from '../../constants/palette';
 import BASE_SIZE from '../../constants/baseSize';
-
 import icons from './icons';
 
 export type IconName = keyof typeof icons;

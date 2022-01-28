@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { GatsbyLinkProps } from 'gatsby';
 
 import { IconName } from '../Icon';
-
 import * as Styles from './styles';
 
 export interface LinkProps

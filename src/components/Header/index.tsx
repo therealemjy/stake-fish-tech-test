@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import * as Styles from './styles';
 
 export type WrapperProps = React.HTMLAttributes<HTMLDivElement>;

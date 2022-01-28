@@ -1,12 +1,15 @@
 import * as React from 'react';
 
-import Icon from '../components/Icon';
+import Header from '../components/Header';
+import Wrapper from '../components/Wrapper';
 
 const HomePage = () => (
   <main>
-    <h1>Home</h1>
+    <Header />
 
-    <Icon name="arrow-left" />
+    <Wrapper>
+      <h1>Home</h1>
+    </Wrapper>
   </main>
 );
 
