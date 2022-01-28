@@ -16,6 +16,7 @@
     "format": "prettier --write \"**/*.ts{,x}\"",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "tsc": "tsc --skipLibCheck",
     "test": "start-server-and-test develop http://localhost:8000 cy:run",
     "test:interactive": "start-server-and-test develop http://localhost:8000 cy:open",
     "storybook": "start-storybook -p 6006",
