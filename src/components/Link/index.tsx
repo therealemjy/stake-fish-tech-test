@@ -4,13 +4,13 @@ import { IconName } from '../Icon';
 
 import * as Styles from './styles';
 
-export interface ButtonProps
+export interface LinkProps
   extends Omit<GatsbyLinkProps<Record<string, unknown>>, 'ref'> {
   label: string;
   iconName?: IconName;
 }
 
-const Link: React.FC<ButtonProps> = ({ label, iconName, ...linkProps }) => (
+const Link: React.FC<LinkProps> = ({ label, iconName, ...linkProps }) => (
   <Styles.Container {...linkProps}>
     {!!iconName && <Styles.Icon name={iconName} />}
 

@@ -7,13 +7,13 @@ import icons from './icons';
 
 export type IconName = keyof typeof icons;
 
-export interface Props {
+export interface IconProps {
   name: IconName;
   size?: number;
   color?: Palette;
 }
 
-const Icon: React.FC<Props> = ({
+const Icon: React.FC<IconProps> = ({
   name,
   color = Palette.white,
   size = BASE_SIZE * 3,
