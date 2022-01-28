@@ -10,7 +10,13 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Basic = Template.bind({});
+Basic.args = {
   label: 'Button',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: 'Button',
+  disabled: true,
 };
