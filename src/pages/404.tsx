@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
+// TODO: refactor. This page is pretty ugly at the moment, but I preferred to
+// focus on the most important parts of the site.
+
 // styles
 const pageStyles = {
   color: '#232129',
