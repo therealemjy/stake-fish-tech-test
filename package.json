@@ -17,7 +17,9 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test": "start-server-and-test develop http://localhost:8000 cy:run",
-    "test:interactive": "start-server-and-test develop http://localhost:8000 cy:open"
+    "test:interactive": "start-server-and-test develop http://localhost:8000 cy:open",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.0.2",
@@ -30,11 +32,20 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@storybook/addon-actions": "^6.4.15",
+    "@storybook/addon-essentials": "^6.4.15",
+    "@storybook/addon-links": "^6.4.15",
+    "@storybook/builder-webpack5": "^6.4.15",
+    "@storybook/manager-webpack5": "^6.4.15",
+    "@storybook/react": "^6.4.15",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "babel-loader": "^8.2.3",
     "cypress": "^9.3.1",
     "prettier": "^2.5.1",
     "start-server-and-test": "^1.14.0",
+    "storybook-addon-gatsby": "^0.0.4",
     "typescript": "^4.5.5"
   },
   "engines": {
