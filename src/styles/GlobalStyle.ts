@@ -52,6 +52,10 @@ const GlobalStyles = createGlobalStyle`
       padding: ${BASE_SIZE}px;
     }
   }
+
+  a {
+    color: inherit;
+  }
 `;
 
 export default GlobalStyles;

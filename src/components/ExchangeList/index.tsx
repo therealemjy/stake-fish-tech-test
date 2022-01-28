@@ -33,7 +33,14 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
           <td>{exchange.rank}</td>
           <td>{exchange.name}</td>
           <td>{exchange.country}</td>
-          <td>{exchange.url}</td>
+          <td>
+            <a
+              href={exchange.url}
+              aria-label={`Visit the website of ${exchange.name}`}
+            >
+              {exchange.url}
+            </a>
+          </td>
         </tr>
       ))}
     </table>
