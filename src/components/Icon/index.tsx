@@ -16,7 +16,7 @@ export interface Props {
 const Icon: React.FC<Props> = ({
   name,
   color = Palette.white,
-  size = BASE_SIZE * 2,
+  size = BASE_SIZE * 3,
   ...props
 }) => {
   const Component = icons[name];

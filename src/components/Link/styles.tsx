@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-// import Palette from '../../constants/palette';
-// import BASE_SIZE from '../../constants/baseSize';
+import BASE_SIZE from '../../constants/baseSize';
+import OriginalIcon from '../Icon';
 
 export const Container = styled(Link)`
-  display: flex;
+  display: inline-flex;
   font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+`;
+
+export const Icon = styled(OriginalIcon)`
+  margin-right: ${BASE_SIZE}px;
 `;
