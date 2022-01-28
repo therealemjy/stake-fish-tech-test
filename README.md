@@ -1,54 +1,48 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Stake.fish Tech Test
 
-## 🚀 Quick start
+## Setup
 
-1.  **Create a Gatsby site.**
+You only need to install the dependencies in order to set this project up:
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+```shell
+npm install
+```
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## Development
 
-2.  **Start developing.**
+### Running the project locally
 
-    Navigate into your new site’s directory and start it up.
+To run the project locally, run the command:
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+```shell
+npm run develop
+```
 
-3.  **Open the code and start customizing!**
+Then visit [http://localhost:8000](http://localhost:8000).
 
-    Your site is now running at http://localhost:8000!
+### Automatic formatting
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+[Prettier](https://prettier.io/) has been added to the project in order to propose a unified format for all the Typescript files. You can format all the `.ts` and `.tsx` files manually by running the command `npm run format`, or install an extension for your IDE such as [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to get that done automatically for you every time you save.
 
-4.  **Learn more**
+## Tests
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+The project uses [Cypress](https://www.cypress.io/) to run end-to-end tests on each page. It is installed as a dev dependency, so once you've run `npm install` you can spin up the tests using the command:
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```shell
+npm run test
+```
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+The tests will execute silently and output whether they were successful in you shell.
+If you wish to choose which individual test to run you can execute the command in interactive mode, which will open Cypress as a standalone app:
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```shell
+npm run test:interactive
+```
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Style guide
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+[Storybook](https://storybook.js.org/) is used in order to build the style guide of the app and which contains all the reusable components. It is also installed as a dev dependency so once you've run `npm install` you can open storybook using the command:
 
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+```shell
+npm run storybook
+```
