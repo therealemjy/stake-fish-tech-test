@@ -31,8 +31,12 @@ export const HeadlineExchange = styled.div`
 
 export const HeadlineExchangeName = styled.h1`
   margin-bottom: 0;
-  display: inline-block;
   margin-right: ${BASE_SIZE * 2}px;
+  flex: 0;
+
+  @media (min-width: ${Breakpoint.tablet}px) {
+    flex: initial;
+  }
 `;
 
 export const HeadlineExchangeRank = styled.span`

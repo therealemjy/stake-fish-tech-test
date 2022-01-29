@@ -32,18 +32,21 @@ const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-size: 3rem;
+    line-height: 1.25;
     font-weight: 600;
     margin-bottom: ${BASE_SIZE * 4}px;
   }
 
   h2 {
     font-size: 2.25rem;
+    line-height: 1.25;
     font-weight: 600;
     margin-bottom: ${BASE_SIZE * 3}px;
   }
 
   h3 {
     font-size: 1.75rem;
+    line-height: 1.25;
     font-weight: 600;
     margin-bottom: ${BASE_SIZE * 3}px;
   }
