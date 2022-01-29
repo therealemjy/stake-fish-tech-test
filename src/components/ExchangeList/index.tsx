@@ -39,7 +39,7 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
               <td>
                 <Styles.ExchangeLink
                   data-test-id="exchange-item-page-link"
-                  to={`/exchange?id=${exchange.id}`}
+                  to={`/exchange/${exchange.id}`}
                   aria-label={`Link to the individual page of ${exchange.name}`}
                 >
                   <Styles.ExchangeLinkLogo

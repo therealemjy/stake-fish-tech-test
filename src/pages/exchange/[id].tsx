@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { PageProps, GetServerData } from 'gatsby';
 
-import { Exchange } from '../services/api';
-import Head from '../components/Head';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Wrapper from '../components/Wrapper';
-import * as Styles from '../pageSpecifics/exchange/styles';
+import { Exchange } from '../../services/api';
+import Head from '../../components/Head';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import Wrapper from '../../components/Wrapper';
+import * as Styles from '../../pageSpecifics/exchange/styles';
 
 interface ServerData {
   data?: Exchange;

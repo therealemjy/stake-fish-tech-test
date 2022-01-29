@@ -18,7 +18,7 @@ export default async function getExchanges({
 
   // Fetch exchanges from API
   const results = await fetchFn(
-    `${process.env.GATSBY_COINGECKO_API_URL}/exchanges/?per_page=${resultsPerPage}&page=${page}`
+    `${process.env.GATSBY_COINGECKO_API_URL}/exchanges?per_page=${resultsPerPage}&page=${page}`
   );
 
   const formattedResults = await results.json();
