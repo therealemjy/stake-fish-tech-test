@@ -5,6 +5,7 @@ import Head from '../components/Head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Wrapper from '../components/Wrapper';
+import * as Styles from '../pageSpecifics/exchange/styles';
 
 interface ServerData {
   error?: string;
@@ -24,6 +25,8 @@ const ExchangePage: React.FC<ExchangePageProps> = ({ serverData }) => (
           <p>{serverData.error}</p>
         ) : (
           <>
+            <Styles.BackLink to="/" label="Go back" />
+
             <h1>Exchange</h1>
           </>
         )}
