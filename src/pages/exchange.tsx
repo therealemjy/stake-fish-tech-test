@@ -45,6 +45,58 @@ const ExchangePage: React.FC<ExchangePageProps> = ({ serverData }) => (
                 </Styles.HeadlineExchangeRank>
               </Styles.HeadlineExchange>
             </Styles.Headline>
+
+            {!!serverData.data?.description && (
+              <p>{serverData.data.description}</p>
+            )}
+
+            {(!!serverData.data?.facebookUrl ||
+              !!serverData.data?.twitterHandle ||
+              !!serverData.data?.slackUrl ||
+              !!serverData.data?.redditUrl ||
+              !!serverData.data?.telegramUrl) && (
+              <Styles.SocialLinks>
+                {!!serverData.data?.facebookUrl && (
+                  <Styles.SocialLink
+                    iconName="social-facebook"
+                    to={serverData.data.facebookUrl}
+                    aria-label={`Link to the Facebook page of ${serverData.data.name}`}
+                  />
+                )}
+
+                {!!serverData.data?.twitterHandle && (
+                  <Styles.SocialLink
+                    iconName="social-twitter"
+                    to={`https://twitter.com/${serverData.data.twitterHandle}`}
+                    aria-label={`Link to the Twitter account of ${serverData.data.name}`}
+                  />
+                )}
+
+                {!!serverData.data?.slackUrl && (
+                  <Styles.SocialLink
+                    iconName="social-slack"
+                    to={serverData.data.slackUrl}
+                    aria-label={`Link to the Slack account of ${serverData.data.name}`}
+                  />
+                )}
+
+                {!!serverData.data?.redditUrl && (
+                  <Styles.SocialLink
+                    iconName="social-reddit"
+                    to={serverData.data.redditUrl}
+                    aria-label={`Link to the Reddit page of ${serverData.data.name}`}
+                  />
+                )}
+
+                {!!serverData.data?.telegramUrl && (
+                  <Styles.SocialLink
+                    iconName="social-telegram"
+                    to={serverData.data.telegramUrl}
+                    aria-label={`Link to the Telegram account of ${serverData.data.name}`}
+                  />
+                )}
+              </Styles.SocialLinks>
+            )}
           </>
         )}
       </Wrapper>

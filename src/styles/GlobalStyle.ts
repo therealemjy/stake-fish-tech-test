@@ -45,7 +45,11 @@ const GlobalStyle = createGlobalStyle`
   h3 {
     font-size: 1.75rem;
     font-weight: 600;
-    margin-bottom: ${BASE_SIZE * 2}px;
+    margin-bottom: ${BASE_SIZE * 3}px;
+  }
+
+  p {
+    margin-bottom: ${BASE_SIZE * 3}px;
   }
 
   table {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import Link from '../../components/Link';
+import RoundLink from '../../components/RoundLink';
 import BASE_SIZE from '../../constants/baseSize';
 import Palette from '../../constants/palette';
 
@@ -38,4 +39,13 @@ export const HeadlineExchangeRank = styled.span`
   border-radius: ${BASE_SIZE / 2}px;
   background-color: ${Palette.pigeonGrey};
   font-size: 1.25rem;
+`;
+
+export const SocialLinks = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const SocialLink = styled(RoundLink)`
+  margin-right: ${BASE_SIZE * 2}px;
 `;
