@@ -20,6 +20,22 @@ npm run develop
 
 Then visit [http://localhost:8000](http://localhost:8000).
 
+### Running a production build locally
+
+First build the project:
+
+```shell
+npm run build
+```
+
+Then launch the server:
+
+```shell
+npm run serve
+```
+
+Then visit [http://localhost:9000](http://localhost:9000).
+
 ### Automatic formatting
 
 [Prettier](https://prettier.io/) has been added to the project in order to propose a unified format for all the Typescript files. You can format all the `.ts` and `.tsx` files manually by running the command `npm run format`, or install an extension for your IDE such as [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) to get that done automatically for you every time you save.

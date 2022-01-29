@@ -34,7 +34,7 @@ export const HeadlineExchangeName = styled.h1`
   margin-right: ${BASE_SIZE * 2}px;
   flex: 0;
 
-  @media (min-width: ${Breakpoint.tablet}px) {
+  @media (min-width: ${Breakpoint.desktop}px) {
     flex: initial;
   }
 `;

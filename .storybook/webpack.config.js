@@ -1,5 +1,3 @@
-// const pathToInlineSvg = path.resolve(__dirname, '../resources/icons');
-
 module.exports = ({ config }) => {
   const rules = config.module.rules;
 
