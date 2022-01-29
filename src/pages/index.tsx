@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Head from '../components/Head';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Wrapper from '../components/Wrapper';
 import ExchangeList from '../components/ExchangeList';
 
@@ -48,16 +49,21 @@ const exchanges = [
 const HomePage = () => (
   <>
     <Head />
+    <Header />
 
     <main>
-      <Header />
-
       <Wrapper>
         <h1>Exchanges</h1>
 
-        <ExchangeList exchanges={exchanges} />
+        <ExchangeList
+          exchanges={exchanges}
+          onLoadMore={() => {}}
+          isLoadingMore={false}
+        />
       </Wrapper>
     </main>
+
+    <Footer />
   </>
 );
 

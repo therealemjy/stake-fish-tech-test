@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
   }
 
+  main {
+    margin-bottom: ${BASE_SIZE * 4}px;
+  }
+
   button {
     font-family: inherit;
     font-size: inherit;

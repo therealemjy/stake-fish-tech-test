@@ -54,4 +54,13 @@ const Template: ComponentStory<typeof ExchangeList> = (args) => (
 export const Basic = Template.bind({});
 Basic.args = {
   exchanges,
+  onLoadMore: () => {},
+  isLoadingMore: false,
+};
+
+export const IsLoading = Template.bind({});
+IsLoading.args = {
+  exchanges,
+  onLoadMore: () => {},
+  isLoadingMore: true,
 };
