@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     background-color: ${Palette.asphaltGrey};
 
-    tr:first-child {
+    thead {
       border-bottom: 1px solid ${Palette.pigeonGrey};
     }
 

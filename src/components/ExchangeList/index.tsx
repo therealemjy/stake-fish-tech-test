@@ -19,43 +19,52 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
   <div {...containerProps}>
     <Styles.TableContainer>
       <table>
-        <tr>
-          <Styles.RankCell>#</Styles.RankCell>
-          <Styles.ExchangeCell>Exchange</Styles.ExchangeCell>
-          <Styles.CountryCell>Country</Styles.CountryCell>
-          <Styles.UrlCell>URL</Styles.UrlCell>
-        </tr>
-
-        {exchanges.map((exchange) => (
+        <thead>
           <tr>
-            <td>{exchange.rank}</td>
-
-            <td>
-              <Styles.ExchangeLink
-                to={`/exchange/${exchange.id}`}
-                aria-label={`Link to the individual page of ${exchange.name}`}
-              >
-                <Styles.ExchangeLinkLogo
-                  src={exchange.logoUri}
-                  alt={`Logo of ${exchange.name}`}
-                />
-
-                <span>{exchange.name}</span>
-              </Styles.ExchangeLink>
-            </td>
-
-            <td>{exchange.country}</td>
-
-            <td>
-              <a
-                href={exchange.url}
-                aria-label={`Link to the website of ${exchange.name}`}
-              >
-                {exchange.url}
-              </a>
-            </td>
+            <Styles.RankCell>#</Styles.RankCell>
+            <Styles.ExchangeCell>Exchange</Styles.ExchangeCell>
+            <Styles.CountryCell>Country</Styles.CountryCell>
+            <Styles.UrlCell>URL</Styles.UrlCell>
           </tr>
-        ))}
+        </thead>
+
+        <tbody>
+          {exchanges.map((exchange) => (
+            <tr
+              data-test-id="exchange-item"
+              key={`exchange-item-${exchange.id}`}
+            >
+              <td>{exchange.rank}</td>
+
+              <td>
+                <Styles.ExchangeLink
+                  data-test-id="exchange-item-page-link"
+                  to={`/exchange/${exchange.id}`}
+                  aria-label={`Link to the individual page of ${exchange.name}`}
+                >
+                  <Styles.ExchangeLinkLogo
+                    src={exchange.logoUri}
+                    alt={`Logo of ${exchange.name}`}
+                  />
+
+                  <span>{exchange.name}</span>
+                </Styles.ExchangeLink>
+              </td>
+
+              <td>{exchange.country}</td>
+
+              <td>
+                <a
+                  data-test-id="exchange-item-website-link"
+                  href={exchange.url}
+                  aria-label={`Link to the website of ${exchange.name}`}
+                >
+                  {exchange.url}
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </Styles.TableContainer>
 

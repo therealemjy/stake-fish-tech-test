@@ -42,32 +42,73 @@ const formatResult = (result: Result): Exchange => ({
 export interface HomePageProps
   extends PageProps<unknown, unknown, unknown, ServerData> {}
 
-const HomePage: React.FC<HomePageProps> = ({ serverData }) => (
-  <>
-    <Head />
-    <Header />
+const HomePage: React.FC<HomePageProps> = ({ serverData }) => {
+  const [exchanges, setExchanges] = React.useState(serverData.exchanges);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [isLoadingMore, setIsLoadingMore] = React.useState(false);
 
-    <main>
-      <Wrapper>
-        {!!serverData.error ? (
-          <p>{serverData.error}</p>
-        ) : (
-          <>
-            <h1>Exchanges</h1>
+  const loadMore = async () => {
+    setIsLoadingMore(true);
 
-            <ExchangeList
-              exchanges={serverData.exchanges}
-              onLoadMore={() => {}}
-              isLoadingMore={false}
-            />
-          </>
-        )}
-      </Wrapper>
-    </main>
+    const results = await window.fetch(
+      `${
+        process.env.GATSBY_COINGECKO_API_URL
+      }?per_page=${RESULTS_PER_PAGE}&page=${currentPage + 1}`
+    );
 
-    <Footer />
-  </>
-);
+    const formattedResults = await results.json();
+
+    if (formattedResults.error) {
+      // TODO: more elegant error handling
+      alert(formattedResults.error);
+    } else {
+      // Format results into exchanges
+      const newExchanges = (formattedResults as Result[]).map((result) =>
+        formatResult(result)
+      );
+
+      // Add exchanges to the list
+      setExchanges((existingExchanges) =>
+        existingExchanges.concat(newExchanges)
+      );
+
+      // Update page number
+      setCurrentPage((existingCurrentPage) => existingCurrentPage + 1);
+
+      // TODO: detect when end of list is reached. CoinGecko's API doesn't provide
+      // any information on that.
+    }
+
+    setIsLoadingMore(false);
+  };
+
+  return (
+    <>
+      <Head />
+      <Header />
+
+      <main>
+        <Wrapper>
+          {!!serverData.error ? (
+            <p>{serverData.error}</p>
+          ) : (
+            <>
+              <h1>Exchanges</h1>
+
+              <ExchangeList
+                exchanges={exchanges}
+                onLoadMore={loadMore}
+                isLoadingMore={isLoadingMore}
+              />
+            </>
+          )}
+        </Wrapper>
+      </main>
+
+      <Footer />
+    </>
+  );
+};
 
 export default HomePage;
 
@@ -90,17 +131,17 @@ export async function getServerData() {
   const serverData: ServerData = { exchanges: [] };
 
   // Fetch exchanges from API
-  const result = await fetch(
+  const results = await fetch(
     `${process.env.GATSBY_COINGECKO_API_URL}?per_page=${RESULTS_PER_PAGE}&page=0`
   );
 
-  const formattedResult = await result.json();
+  const formattedResults = await results.json();
 
-  if (formattedResult.error) {
+  if (formattedResults.error) {
     serverData.error = 'An error occurred, please try again later.';
   } else {
     // Format results into exchanges
-    const exchanges = (formattedResult as Result[]).map((result) =>
+    const exchanges = (formattedResults as Result[]).map((result) =>
       formatResult(result)
     );
 

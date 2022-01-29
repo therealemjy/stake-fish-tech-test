@@ -5,7 +5,7 @@ import ExchangeList from './index';
 
 const exchanges = [
   {
-    id: 0,
+    id: 'binance',
     rank: 1,
     name: 'Binance',
     country: 'Cayman Islands',
@@ -14,7 +14,7 @@ const exchanges = [
       'https://assets.coingecko.com/markets/images/52/small/binance.jpg?1519353250',
   },
   {
-    id: 1,
+    id: 'okx',
     rank: 2,
     name: 'OKX',
     country: 'Belize',
@@ -23,7 +23,7 @@ const exchanges = [
       'https://assets.coingecko.com/markets/images/96/small/WeChat_Image_20220117220452.png?1642428377',
   },
   {
-    id: 2,
+    id: 'coinbase',
     rank: 3,
     name: 'Coinbase Exchange',
     country: 'United States',
@@ -32,7 +32,7 @@ const exchanges = [
       'https://assets.coingecko.com/markets/images/23/small/Coinbase_Coin_Primary.png?1621471875',
   },
   {
-    id: 3,
+    id: 'kucoin',
     rank: 4,
     name: 'KuCoin',
     country: 'Seychelles',
