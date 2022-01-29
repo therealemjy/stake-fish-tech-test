@@ -13,6 +13,14 @@ const GlobalStyle = createGlobalStyle`
     background-color: #121619;
   }
 
+  html {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+  }
+
   button {
     font-family: inherit;
     font-size: inherit;

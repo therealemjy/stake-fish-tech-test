@@ -57,6 +57,8 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
         </tr>
       ))}
     </table>
+
+    {/* TODO: add button to load more rows */}
   </Styles.Container>
 );
 
