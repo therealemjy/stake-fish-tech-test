@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Exchange } from '../../types';
+import { Exchange } from '../../services/api/types';
 import * as Styles from './styles';
 
 export interface ExchangeListProps

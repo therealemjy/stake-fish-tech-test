@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
 
-import { Exchange } from '../types';
+import apiService, { Exchange } from '../services/api';
 import Head from '../components/Head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -11,65 +11,34 @@ import ExchangeList from '../components/ExchangeList';
 const RESULTS_PER_PAGE = 10;
 
 interface ServerData {
-  exchanges: Exchange[];
+  data: Exchange[];
   error?: string;
 }
-
-interface Result {
-  id: string;
-  name: string;
-  year_established: number;
-  country: string;
-  description: string;
-  url: string;
-  image: string;
-  has_trading_incentive: boolean;
-  trust_score: number;
-  trust_score_rank: number;
-  trade_volume_24h_btc: number;
-  trade_volume_24h_btc_normalized: number;
-}
-
-const formatResult = (result: Result): Exchange => ({
-  id: result.id,
-  rank: result.trust_score_rank,
-  name: result.name,
-  country: result.country,
-  url: result.url,
-  logoUri: result.image,
-});
 
 export interface HomePageProps
   extends PageProps<unknown, unknown, unknown, ServerData> {}
 
 const HomePage: React.FC<HomePageProps> = ({ serverData }) => {
-  const [exchanges, setExchanges] = React.useState(serverData.exchanges);
+  const [exchanges, setExchanges] = React.useState(serverData.data);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [isLoadingMore, setIsLoadingMore] = React.useState(false);
 
   const loadMore = async () => {
     setIsLoadingMore(true);
 
-    const results = await window.fetch(
-      `${
-        process.env.GATSBY_COINGECKO_API_URL
-      }?per_page=${RESULTS_PER_PAGE}&page=${currentPage + 1}`
-    );
+    // Fetch exchanges from API
+    const result = await apiService.getExchanges({
+      resultsPerPage: RESULTS_PER_PAGE,
+      page: currentPage + 1,
+    });
 
-    const formattedResults = await results.json();
-
-    if (formattedResults.error) {
+    if (result.error) {
       // TODO: more elegant error handling
-      alert(formattedResults.error);
+      alert(result.error);
     } else {
-      // Format results into exchanges
-      const newExchanges = (formattedResults as Result[]).map((result) =>
-        formatResult(result)
-      );
-
       // Add exchanges to the list
       setExchanges((existingExchanges) =>
-        existingExchanges.concat(newExchanges)
+        existingExchanges.concat(result.data || [])
       );
 
       // Update page number
@@ -128,25 +97,12 @@ export async function getServerData() {
     throw new Error('Environment variable missing: GATSBY_COINGECKO_API_URL');
   }
 
-  const serverData: ServerData = { exchanges: [] };
-
   // Fetch exchanges from API
-  const results = await fetch(
-    `${process.env.GATSBY_COINGECKO_API_URL}?per_page=${RESULTS_PER_PAGE}&page=0`
-  );
-
-  const formattedResults = await results.json();
-
-  if (formattedResults.error) {
-    serverData.error = 'An error occurred, please try again later.';
-  } else {
-    // Format results into exchanges
-    const exchanges = (formattedResults as Result[]).map((result) =>
-      formatResult(result)
-    );
-
-    serverData.exchanges = exchanges;
-  }
+  const serverData = await apiService.getExchanges({
+    resultsPerPage: RESULTS_PER_PAGE,
+    page: 0,
+    isSSR: true,
+  });
 
   return {
     status: 200,
