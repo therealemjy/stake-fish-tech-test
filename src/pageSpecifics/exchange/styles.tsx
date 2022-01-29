@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import Link from '../../components/Link';
 import RoundLink from '../../components/RoundLink';
-import Breakpoint from '../../constants/Breakpoint';
+import Breakpoint from '../../constants/breakpoint';
 import BASE_SIZE from '../../constants/baseSize';
 import Palette from '../../constants/palette';
 

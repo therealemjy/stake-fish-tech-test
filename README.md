@@ -57,11 +57,7 @@ npm run test:interactive
 
 ## Style guide
 
-[Storybook](https://storybook.js.org/) is used in order to build the style guide of the app and which contains all the reusable components. It is also installed as a dev dependency so once you've run `npm install` you can open storybook using this set of commands:
-
-```shell
-npm run build-storybook
-```
+[Storybook](https://storybook.js.org/) is used in order to build the style guide of the app and which contains all the reusable components. It is also installed as a dev dependency so once you've run `npm install` you can open storybook using this command:
 
 ```shell
 npm run storybook

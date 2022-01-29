@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Breakpoint from '../../constants/Breakpoint';
+import Breakpoint from '../../constants/breakpoint';
 import BASE_SIZE from '../../constants/baseSize';
 
 export const Container = styled.div`
