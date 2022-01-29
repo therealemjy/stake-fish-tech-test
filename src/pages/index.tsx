@@ -101,7 +101,6 @@ export const getServerData: GetServerData<ServerData> = async () => {
   const serverData = await apiService.getExchanges({
     resultsPerPage: RESULTS_PER_PAGE,
     page: 0,
-    isSSR: true,
   });
 
   return {

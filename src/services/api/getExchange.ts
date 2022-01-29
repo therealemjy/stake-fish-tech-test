@@ -1,5 +1,6 @@
 import { Response, Exchange, ApiExchange } from './types';
 import formatExchange from './utils/formatExchange';
+import getFetchFunction from './utils/getFetchFunction';
 
 export interface Params {
   id: string;
@@ -8,11 +9,8 @@ export interface Params {
 
 export type Output = Response<Exchange>;
 
-export default async function getExchange({
-  id,
-  isSSR = false,
-}: Params): Promise<Output> {
-  const fetchFn = isSSR ? fetch : window.fetch;
+export default async function getExchange({ id }: Params): Promise<Output> {
+  const fetchFn = getFetchFunction();
 
   // Fetch exchange from API
   const result = await fetchFn(

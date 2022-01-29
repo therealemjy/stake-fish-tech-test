@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PageProps, GetServerData } from 'gatsby';
+import { PageProps, GetServerData, GetServerDataProps } from 'gatsby';
 
-import { Exchange } from '../../services/api';
+import apiService, { Exchange } from '../../services/api';
 import Head from '../../components/Head';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -147,27 +147,12 @@ const ExchangePage: React.FC<ExchangePageProps> = ({ serverData }) => (
 
 export default ExchangePage;
 
-export const getServerData: GetServerData<ServerData> = async () => {
-  const serverData: ServerData = {
-    // TODO: fetch exchange from API
-    data: {
-      id: 'binance',
-      rank: 1,
-      name: 'Binance',
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-      country: 'Cayman Islands',
-      url: 'https://www.binance.com/',
-      logoUri:
-        'https://assets.coingecko.com/markets/images/52/small/binance.jpg?1519353250',
-      yearEstablished: 2018,
-      facebookUrl: 'https://www.binance.com/',
-      redditUrl: 'https://www.binance.com/',
-      slackUrl: 'https://www.binance.com/',
-      telegramUrl: 'https://www.binance.com/',
-      twitterHandle: '@the_real_emjy',
-    },
-  };
+export const getServerData: GetServerData<ServerData> = async (context) => {
+  const serverData = await apiService.getExchange({
+    // Ideally we would specify the type of the route params inside the context,
+    // but Gatsby's typing doesn't permit it so we have to enforce it
+    id: context.params!.id as string,
+  });
 
   return {
     status: 200,
