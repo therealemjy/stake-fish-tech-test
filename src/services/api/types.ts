@@ -1,16 +1,13 @@
 export interface ApiIndividualExchangeResult {
   id: string;
-  name: string;
-  country: string;
-  image: string;
   trust_score_rank: number;
+  name: string;
+  image: string;
   description?: string;
-  url?: string;
   year_established?: number;
-  has_trading_incentive?: boolean;
+  url?: string;
+  country?: string;
   trust_score?: number;
-  trade_volume_24h_btc?: number;
-  trade_volume_24h_btc_normalized?: number;
 }
 
 export interface Exchange {
