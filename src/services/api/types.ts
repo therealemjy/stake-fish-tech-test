@@ -1,4 +1,4 @@
-export interface ApiIndividualExchangeResult {
+export interface ApiExchange {
   id: string;
   trust_score_rank: number;
   name: string;
@@ -7,7 +7,11 @@ export interface ApiIndividualExchangeResult {
   year_established?: number;
   url?: string;
   country?: string;
-  trust_score?: number;
+  facebook_url?: string;
+  telegram_url?: string;
+  slack_url?: string;
+  reddit_url?: string;
+  twitter_handle?: string;
 }
 
 export interface Exchange {

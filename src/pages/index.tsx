@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PageProps } from 'gatsby';
+import { PageProps, GetServerData } from 'gatsby';
 
 import apiService, { Exchange } from '../services/api';
 import Head from '../components/Head';
@@ -92,13 +92,13 @@ export default HomePage;
 // optimized by putting server-side caching in place, so that the initial render
 // of the home page would only be generated once every few hours rather than
 // every time someone visits the website.
-export async function getServerData() {
+export const getServerData: GetServerData<ServerData> = async () => {
   if (!process.env.GATSBY_COINGECKO_API_URL) {
     throw new Error('Environment variable missing: GATSBY_COINGECKO_API_URL');
   }
 
   // Fetch exchanges from API
-  const serverData: ServerData = await apiService.getExchanges({
+  const serverData = await apiService.getExchanges({
     resultsPerPage: RESULTS_PER_PAGE,
     page: 0,
     isSSR: true,
@@ -107,6 +107,5 @@ export async function getServerData() {
   return {
     status: 200,
     props: serverData,
-    headers: {},
   };
-}
+};

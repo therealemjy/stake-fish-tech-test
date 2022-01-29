@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PageProps } from 'gatsby';
+import { PageProps, GetServerData } from 'gatsby';
 
 import { Exchange } from '../services/api';
 import Head from '../components/Head';
@@ -147,7 +147,7 @@ const ExchangePage: React.FC<ExchangePageProps> = ({ serverData }) => (
 
 export default ExchangePage;
 
-export async function getServerData() {
+export const getServerData: GetServerData<ServerData> = async () => {
   const serverData: ServerData = {
     // TODO: fetch exchange from API
     data: {
@@ -172,6 +172,5 @@ export async function getServerData() {
   return {
     status: 200,
     props: serverData,
-    headers: {},
   };
-}
+};

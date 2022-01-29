@@ -1,4 +1,4 @@
-import { Response, Exchange, ApiIndividualExchangeResult } from './types';
+import { Response, Exchange, ApiExchange } from './types';
 import formatResult from './utils/formatExchange';
 
 export interface Params {
@@ -18,7 +18,7 @@ export default async function getExchanges({
 
   // Fetch exchanges from API
   const results = await fetchFn(
-    `${process.env.GATSBY_COINGECKO_API_URL}?per_page=${resultsPerPage}&page=${page}`
+    `${process.env.GATSBY_COINGECKO_API_URL}/exchanges/?per_page=${resultsPerPage}&page=${page}`
   );
 
   const formattedResults = await results.json();
@@ -28,8 +28,8 @@ export default async function getExchanges({
     output.error = 'An error occurred, please try again later.';
   } else {
     // Format results into exchanges
-    const exchanges = (formattedResults as ApiIndividualExchangeResult[]).map(
-      (result) => formatResult(result)
+    const exchanges = (formattedResults as ApiExchange[]).map((result) =>
+      formatResult(result)
     );
 
     output.data = exchanges;
