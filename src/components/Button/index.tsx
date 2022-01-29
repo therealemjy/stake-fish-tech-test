@@ -8,7 +8,9 @@ export interface ButtonProps
 }
 
 const Button: React.FC<ButtonProps> = ({ label, ...buttonProps }) => (
-  <Styles.Container {...buttonProps}>{label}</Styles.Container>
+  <Styles.Container type="button" {...buttonProps}>
+    {label}
+  </Styles.Container>
 );
 
 export default Button;

@@ -39,7 +39,10 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
             <td>{exchange.rank}</td>
 
             <td>
-              <Styles.ExchangeLink to={`/exchange/${exchange.id}`}>
+              <Styles.ExchangeLink
+                to={`/exchange/${exchange.id}`}
+                aria-label={`Link to the individual page of ${exchange.name}`}
+              >
                 <Styles.ExchangeLinkLogo
                   src={exchange.logoUri}
                   alt={`Logo of ${exchange.name}`}
@@ -54,7 +57,7 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
             <td>
               <a
                 href={exchange.url}
-                aria-label={`Visit the website of ${exchange.name}`}
+                aria-label={`Link to the website of ${exchange.name}`}
               >
                 {exchange.url}
               </a>
