@@ -14,14 +14,18 @@ export interface Exchange {
 export interface ExchangeListProps
   extends React.HTMLAttributes<HTMLDivElement> {
   exchanges: Exchange[];
+  onLoadMore: () => void;
+  isLoadingMore?: boolean;
 }
 
 const ExchangeList: React.FC<ExchangeListProps> = ({
   exchanges,
+  onLoadMore,
+  isLoadingMore = false,
   ...containerProps
 }) => (
   <Styles.Container {...containerProps}>
-    <table>
+    <Styles.Table>
       <tr>
         <Styles.RankCell>#</Styles.RankCell>
         <Styles.ExchangeCell>Exchange</Styles.ExchangeCell>
@@ -56,9 +60,13 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
           </td>
         </tr>
       ))}
-    </table>
+    </Styles.Table>
 
-    {/* TODO: add button to load more rows */}
+    <Styles.LoadMoreButton
+      label="Load more"
+      onClick={onLoadMore}
+      disabled={isLoadingMore}
+    />
   </Styles.Container>
 );
 

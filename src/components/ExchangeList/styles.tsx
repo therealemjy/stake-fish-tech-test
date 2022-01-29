@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-import Palette from '../../constants/palette';
+import Button from '../Button';
 import BASE_SIZE from '../../constants/baseSize';
 
-export const Container = styled.div`
-  background-color: ${Palette.asphaltGrey};
+export const Container = styled.div``;
+
+export const TableContainer = styled.div`
   overflow-x: auto;
+`;
+
+export const Table = styled.table`
+  margin-bottom: ${BASE_SIZE * 4}px;
 `;
 
 export const RankCell = styled.th`
@@ -34,4 +39,10 @@ export const ExchangeLinkLogo = styled.img`
   width: ${BASE_SIZE * 4}px;
   height: ${BASE_SIZE * 4}px;
   margin-right: ${BASE_SIZE * 2}px;
+`;
+
+export const LoadMoreButton = styled(Button)`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
