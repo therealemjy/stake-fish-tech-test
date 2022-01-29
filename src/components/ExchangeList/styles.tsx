@@ -4,13 +4,8 @@ import { Link } from 'gatsby';
 import Button from '../Button';
 import BASE_SIZE from '../../constants/baseSize';
 
-export const Container = styled.div``;
-
 export const TableContainer = styled.div`
   overflow-x: auto;
-`;
-
-export const Table = styled.table`
   margin-bottom: ${BASE_SIZE * 4}px;
 `;
 

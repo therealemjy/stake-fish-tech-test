@@ -24,50 +24,52 @@ const ExchangeList: React.FC<ExchangeListProps> = ({
   isLoadingMore = false,
   ...containerProps
 }) => (
-  <Styles.Container {...containerProps}>
-    <Styles.Table>
-      <tr>
-        <Styles.RankCell>#</Styles.RankCell>
-        <Styles.ExchangeCell>Exchange</Styles.ExchangeCell>
-        <Styles.CountryCell>Country</Styles.CountryCell>
-        <Styles.UrlCell>URL</Styles.UrlCell>
-      </tr>
-
-      {exchanges.map((exchange) => (
+  <div {...containerProps}>
+    <Styles.TableContainer>
+      <table>
         <tr>
-          <td>{exchange.rank}</td>
-
-          <td>
-            <Styles.ExchangeLink to={`/exchange/${exchange.id}`}>
-              <Styles.ExchangeLinkLogo
-                src={exchange.logoUri}
-                alt={`Logo of ${exchange.name}`}
-              />
-
-              <span>{exchange.name}</span>
-            </Styles.ExchangeLink>
-          </td>
-
-          <td>{exchange.country}</td>
-
-          <td>
-            <a
-              href={exchange.url}
-              aria-label={`Visit the website of ${exchange.name}`}
-            >
-              {exchange.url}
-            </a>
-          </td>
+          <Styles.RankCell>#</Styles.RankCell>
+          <Styles.ExchangeCell>Exchange</Styles.ExchangeCell>
+          <Styles.CountryCell>Country</Styles.CountryCell>
+          <Styles.UrlCell>URL</Styles.UrlCell>
         </tr>
-      ))}
-    </Styles.Table>
+
+        {exchanges.map((exchange) => (
+          <tr>
+            <td>{exchange.rank}</td>
+
+            <td>
+              <Styles.ExchangeLink to={`/exchange/${exchange.id}`}>
+                <Styles.ExchangeLinkLogo
+                  src={exchange.logoUri}
+                  alt={`Logo of ${exchange.name}`}
+                />
+
+                <span>{exchange.name}</span>
+              </Styles.ExchangeLink>
+            </td>
+
+            <td>{exchange.country}</td>
+
+            <td>
+              <a
+                href={exchange.url}
+                aria-label={`Visit the website of ${exchange.name}`}
+              >
+                {exchange.url}
+              </a>
+            </td>
+          </tr>
+        ))}
+      </table>
+    </Styles.TableContainer>
 
     <Styles.LoadMoreButton
       label="Load more"
       onClick={onLoadMore}
       disabled={isLoadingMore}
     />
-  </Styles.Container>
+  </div>
 );
 
 export default ExchangeList;
