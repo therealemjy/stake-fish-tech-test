@@ -11,7 +11,7 @@ import ExchangeList from '../components/ExchangeList';
 const RESULTS_PER_PAGE = 10;
 
 interface ServerData {
-  data: Exchange[];
+  data?: Exchange[];
   error?: string;
 }
 
@@ -19,7 +19,7 @@ export interface HomePageProps
   extends PageProps<unknown, unknown, unknown, ServerData> {}
 
 const HomePage: React.FC<HomePageProps> = ({ serverData }) => {
-  const [exchanges, setExchanges] = React.useState(serverData.data);
+  const [exchanges, setExchanges] = React.useState(serverData.data || []);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [isLoadingMore, setIsLoadingMore] = React.useState(false);
 
@@ -98,7 +98,7 @@ export async function getServerData() {
   }
 
   // Fetch exchanges from API
-  const serverData = await apiService.getExchanges({
+  const serverData: ServerData = await apiService.getExchanges({
     resultsPerPage: RESULTS_PER_PAGE,
     page: 0,
     isSSR: true,
