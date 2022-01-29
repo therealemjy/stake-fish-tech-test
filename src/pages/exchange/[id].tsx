@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PageProps, GetServerData, GetServerDataProps } from 'gatsby';
+import { PageProps, GetServerData } from 'gatsby';
 
 import apiService, { Exchange } from '../../services/api';
 import Head from '../../components/Head';
@@ -18,7 +18,13 @@ export interface ExchangePageProps
 
 const ExchangePage: React.FC<ExchangePageProps> = ({ serverData }) => (
   <>
-    <Head />
+    <Head
+      title={`MakeItRain - ${serverData.data?.name}`}
+      description={
+        serverData.data?.description ||
+        `Page of the exchange ${serverData.data?.name}`
+      }
+    />
     <Header />
 
     <main>
@@ -147,10 +153,20 @@ const ExchangePage: React.FC<ExchangePageProps> = ({ serverData }) => (
 
 export default ExchangePage;
 
+// Note: just like on the home page, I've made the decision to fetch the
+// exchange data at run-time through server-side rendering. Although most of the
+// data present on the page is unlikely to change often, we are still displaying
+// the trust rank of the exchange which is very likely to change. Furthermore,
+// the list of existing exchanges is substantially long and keeps changing, so
+// unless the traffic on the website becomes so high that it presents
+// scalability issues and no other option is feasible (server-side caching for
+// example), building static pages does not make sense.
 export const getServerData: GetServerData<ServerData> = async (context) => {
   const serverData = await apiService.getExchange({
     // Ideally we would specify the type of the route params inside the context,
-    // but Gatsby's typing doesn't permit it so we have to enforce it
+    // but Gatsby's typing doesn't permit it so we have to enforce it (at this
+    // stage we know the route param "id" exists, as otherwise the user is
+    // redirected to the 404 page
     id: context.params!.id as string,
   });
 

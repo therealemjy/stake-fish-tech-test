@@ -53,7 +53,10 @@ const HomePage: React.FC<HomePageProps> = ({ serverData }) => {
 
   return (
     <>
-      <Head />
+      <Head
+        title="MakeItRain"
+        description="List of cryptocurrency trading exchanges, ranked by score of trust."
+      />
       <Header />
 
       <main>
