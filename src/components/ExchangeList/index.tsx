@@ -1,15 +1,7 @@
 import * as React from 'react';
 
+import { Exchange } from '../../types';
 import * as Styles from './styles';
-
-export interface Exchange {
-  id: number;
-  rank: number;
-  name: string;
-  url: string;
-  logoUri: string;
-  country: string;
-}
 
 export interface ExchangeListProps
   extends React.HTMLAttributes<HTMLDivElement> {
