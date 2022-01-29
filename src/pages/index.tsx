@@ -151,5 +151,6 @@ export async function getServerData() {
   return {
     status: 200,
     props: serverData,
+    headers: {},
   };
 }

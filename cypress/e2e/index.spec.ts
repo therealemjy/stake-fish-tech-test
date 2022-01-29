@@ -19,7 +19,4 @@ describe('Home page', () => {
     // Check 10 more exchanges have been fetched and added to the list
     cy.get('[data-test-id="exchange-item"]').should('have.length', 20);
   });
-
-  // TODO:
-  // it('goes to exchange page when clicking on its name')
 });
